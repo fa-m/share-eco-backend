@@ -2,8 +2,7 @@ package de.shareeco.user.boundary;
 
 import de.shareeco.user.entity.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +15,24 @@ public class UserResource {
     @ResponseBody
     public List<User> getUsers() {
         return userRepository.getUsers();
+    }
+
+    @PostMapping("/user")
+    @ResponseBody
+    public User postUser() {
+        return null;
+    }
+
+    @PutMapping("/user/{id}")
+    @ResponseBody
+    public User putUser(@PathVariable("id") long id) {
+        return new User("Dolf", "nimeand", "X");
+    }
+
+    @DeleteMapping("/user/{id}")
+    @ResponseBody
+    public User deleteUser(@PathVariable("id") long id) {
+        return new User("Dolf", "nimeand", "X");
     }
 
 }

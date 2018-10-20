@@ -1,10 +1,7 @@
 package de.shareeco.post.boundary;
 
 import de.shareeco.post.entity.Post;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +14,24 @@ public class PostController {
     @ResponseBody
     public List<Post> getPosts() {
         return postRepository.getPosts();
+    }
+
+    @PutMapping("/post/{id}")
+    @ResponseBody
+    public Post putPost(@PathVariable("id") long id) {
+        return postRepository.getPosts().get(0);
+    }
+
+    @PostMapping("/post")
+    @ResponseBody
+    public Post postPost() {
+        return postRepository.getPosts().get(0);
+    }
+
+    @DeleteMapping("/post/{id}")
+    @ResponseBody
+    public Post deletePost(@PathVariable("id") long id) {
+        return postRepository.getPostById(id);
     }
 
     @GetMapping("/post/{postId}")
